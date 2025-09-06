@@ -1,45 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jordan Sena | Cybersecurity Portfolio</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jordan Sena • Cybersecurity & IT</title>
+  <meta name="description" content="SOC-focused cybersecurity and IT portfolio by Jordan Sena." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="images/favicon.png" />
 </head>
 <body>
-  <header>
-    <h1>Jordan Sena</h1>
-    <p>Cybersecurity & IT Professional</p>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#">JS</a>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a class="btn btn--ghost" href="mailto:03jordansena@gmail.com">Contact</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <p class="eyebrow">Cybersecurity • SOC • IT Ops</p>
+      <h1>Hi, I’m Jordan. I investigate alerts, automate the boring stuff, and keep systems steady.</h1>
+      <p class="lead">
+        Hands-on with Python, PowerShell, Splunk/Wazuh labs, and real-world IT support.
+        Curious by default. Action-oriented when it counts.
+      </p>
+      <div class="cta">
+        <a class="btn" href="#projects">View Projects</a>
+        <a class="btn btn--ghost" href="https://github.com/YouAndMeSundance" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </section>
   </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <main>
+    <section id="projects" class="section">
+      <h2>Featured Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="card-head">
+            <h3>Port Scanner (Python)</h3>
+            <span class="badge">Python</span>
+          </div>
+          <p>Multi-threaded TCP scanner with clean CLI output and safe defaults. Built for fast triage in lab networks.</p>
+          <div class="meta">
+            <span>Threads • Timeout control • CSV export</span>
+          </div>
+          <a class="btn btn--inline" href="https://github.com/YouAndMeSundance/port-scanner" target="_blank" rel="noopener">Repo</a>
+        </article>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I’m a System Coordinator with experience in IT, security monitoring, and hands-on labs. I enjoy digging into problems and building solutions with tools like Python, PowerShell, and Splunk.</p>
-  </section>
+        <article class="card">
+          <div class="card-head">
+            <h3>Packet Analysis (Scapy)</h3>
+            <span class="badge">Networking</span>
+          </div>
+          <p>Capture + parse workflow to spot login anomalies and suspicious hosts. Quick filters for RDP and SMB traffic.</p>
+          <div class="meta">
+            <span>Scapy • PCAP parsing • Enrichment</span>
+          </div>
+          <a class="btn btn--inline" href="https://github.com/YouAndMeSundance/packet-analysis" target="_blank" rel="noopener">Repo</a>
+        </article>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><a href="https://github.com/YouAndMeSundance/port-scanner">Python Port Scanner</a></li>
-      <li><a href="https://github.com/YouAndMeSundance/packet-analysis">Scapy Packet Analysis</a></li>
-      <li><a href="https://github.com/YouAndMeSundance/powershell-scripts">PowerShell AD Automation</a></li>
-    </ul>
-  </section>
+        <article class="card">
+          <div class="card-head">
+            <h3>AD Automation (PowerShell)</h3>
+            <span class="badge">PowerShell</span>
+          </div>
+          <p>User lifecycle scripts for quick provisioning, access checks, and audit-friendly logs.</p>
+          <div class="meta">
+            <span>CSV-driven • Logging • Idempotent</span>
+          </div>
+          <a class="btn btn--inline" href="https://github.com/YouAndMeSundance/powershell-scripts" target="_blank" rel="noopener">Repo</a>
+        </article>
+      </div>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: your.email@example.com</p>
-    <p><a href="https://www.linkedin.com/in/jsena03">LinkedIn</a></p>
-  </section>
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <ul class="tags">
+        <li>Splunk</li><li>Wazuh</li><li>Kali</li><li>Wireshark</li><li>Python</li><li>PowerShell</li>
+        <li>Windows Admin</li><li>AD/Azure AD</li><li>Ticketing</li><li>Networking</li>
+      </ul>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 Jordan Sena</p>
+    <section id="about" class="section about">
+      <div class="about-inner">
+        <div>
+          <h2>About</h2>
+          <p>
+            System Coordinator with real IT support experience and a SOC mindset. I like turning noisy data into clear action,
+            writing small tools to speed up investigations, and documenting what I learn so others can use it.
+          </p>
+          <p>
+            Recent focus: building repeatable workflows for log review, writing tidy Python scripts,
+            and practicing alert triage in Splunk and Wazuh labs.
+          </p>
+          <div class="about-links">
+            <a class="btn btn--ghost" href="mailto:03jordansena@gmail.com">Email</a>
+            <a class="btn btn--ghost" href="https://www.linkedin.com/in/jsena03" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+        <img class="headshot" src="images/headshot.jpg" alt="Jordan Sena headshot" />
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="y"></span> Jordan Sena • Built with HTML + CSS</p>
   </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
