@@ -1,117 +1,208 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jordan Sena • Cybersecurity & IT</title>
-  <meta name="description" content="SOC-focused cybersecurity and IT portfolio by Jordan Sena." />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="images/favicon.png" />
+  <meta name="description" content="SOC focused cybersecurity and IT portfolio by Jordan Sena." />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind config inline -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            bg:  '#0b0f17',
+            panel:'#0f1724',
+            ink:  '#e6e9ef',
+            mute: '#9aa5b1',
+            brand:'#5eead4',
+            brand2:'#7c3aed'
+          },
+          boxShadow: {
+            glow: '0 0 0 3px rgba(94,234,212,.25)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    html, body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    /* gradient background */
+    .bg-grid {
+      background:
+        radial-gradient(800px 400px at 10% -10%, rgba(124,58,237,.18), transparent 60%),
+        radial-gradient(700px 350px at 110% 10%, rgba(94,234,212,.12), transparent 55%);
+    }
+  </style>
+  <script>
+    // theme preference persist
+    const userPref = localStorage.getItem('theme');
+    if (userPref === 'light') document.documentElement.classList.remove('dark');
+    if (userPref === 'dark')  document.documentElement.classList.add('dark');
+  </script>
 </head>
-<body>
-  <header class="site-header">
-    <nav class="nav">
-      <a class="brand" href="#">JS</a>
-      <div class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#about">About</a>
-        <a class="btn btn--ghost" href="mailto:03jordansena@gmail.com">Contact</a>
+
+<body class="bg-bg text-ink bg-grid min-h-screen">
+  <!-- Nav -->
+  <header class="border-b border-white/10">
+    <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#" class="inline-grid w-10 h-10 place-items-center rounded-xl
+         text-bg font-extrabold tracking-wide
+         bg-gradient-to-tr from-brand to-brand2 shadow-glow">JS</a>
+
+      <div class="hidden sm:flex items-center gap-6 text-sm">
+        <a href="#projects" class="text-ink/90 hover:text-ink">Projects</a>
+        <a href="#skills" class="text-ink/90 hover:text-ink">Skills</a>
+        <a href="#about" class="text-ink/90 hover:text-ink">About</a>
+        <a href="mailto:03jordansena@gmail.com"
+           class="px-3 py-1.5 rounded-lg border border-white/15 text-ink/90 hover:text-ink">Contact</a>
+        <button id="themeBtn" class="px-3 py-1.5 rounded-lg bg-panel border border-white/10">
+          Toggle Theme
+        </button>
       </div>
     </nav>
 
-    <section class="hero">
-      <p class="eyebrow">Cybersecurity • SOC • IT Ops</p>
-      <h1>Hi, I’m Jordan. I investigate alerts, automate the boring stuff, and keep systems steady.</h1>
-      <p class="lead">
-        Hands-on with Python, PowerShell, Splunk/Wazuh labs, and real-world IT support.
-        Curious by default. Action-oriented when it counts.
+    <!-- Hero -->
+    <section class="max-w-6xl mx-auto px-4 pb-10 pt-6">
+      <p class="uppercase tracking-[.16em] text-brand text-xs mb-2">Cybersecurity • SOC • IT Ops</p>
+      <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight mb-3">
+        Hi, I’m Jordan. I investigate alerts, automate the boring parts, and keep systems steady.
+      </h1>
+      <p class="text-mute max-w-3xl">
+        Hands-on with Python, PowerShell, Splunk and Wazuh labs, plus real IT support.
+        Curious by default. Action oriented when it counts.
       </p>
-      <div class="cta">
-        <a class="btn" href="#projects">View Projects</a>
-        <a class="btn btn--ghost" href="https://github.com/YouAndMeSundance" target="_blank" rel="noopener">GitHub</a>
+      <div class="flex gap-3 mt-5">
+        <a href="#projects" class="px-4 py-2 rounded-xl text-bg font-bold
+           bg-gradient-to-tr from-brand to-brand2 shadow-glow">View Projects</a>
+        <a href="https://github.com/YouAndMeSundance" target="_blank" rel="noopener"
+           class="px-4 py-2 rounded-xl border border-white/15 text-ink/90 hover:text-ink">GitHub</a>
       </div>
     </section>
   </header>
 
-  <main>
-    <section id="projects" class="section">
-      <h2>Featured Projects</h2>
-      <div class="grid">
-        <article class="card">
-          <div class="card-head">
-            <h3>Port Scanner (Python)</h3>
-            <span class="badge">Python</span>
+  <main class="pb-16">
+    <!-- Projects -->
+    <section id="projects" class="max-w-6xl mx-auto px-4 pt-10">
+      <h2 class="text-2xl font-extrabold mb-5">Featured Projects</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Card 1 -->
+        <article class="rounded-2xl bg-panel/70 border border-white/10 p-4 hover:border-brand/40 transition shadow-lg">
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="font-bold">Port Scanner</h3>
+            <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full
+              bg-gradient-to-tr from-brand to-brand2">Python</span>
           </div>
-          <p>Multi-threaded TCP scanner with clean CLI output and safe defaults. Built for fast triage in lab networks.</p>
-          <div class="meta">
-            <span>Threads • Timeout control • CSV export</span>
-          </div>
-          <a class="btn btn--inline" href="https://github.com/YouAndMeSundance/port-scanner" target="_blank" rel="noopener">Repo</a>
+          <p class="text-mute text-sm">
+            Multi threaded TCP scan with safe defaults. Built for quick triage in lab networks.
+          </p>
+          <p class="text-mute text-xs mt-2">Threads • Timeout control • CSV export</p>
+          <a class="inline-block mt-3 text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20"
+             href="https://github.com/YouAndMeSundance/port-scanner" target="_blank" rel="noopener">Repo</a>
         </article>
 
-        <article class="card">
-          <div class="card-head">
-            <h3>Packet Analysis (Scapy)</h3>
-            <span class="badge">Networking</span>
+        <!-- Card 2 -->
+        <article class="rounded-2xl bg-panel/70 border border-white/10 p-4 hover:border-brand/40 transition shadow-lg">
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="font-bold">Packet Analysis</h3>
+            <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full
+              bg-gradient-to-tr from-brand to-brand2">Networking</span>
           </div>
-          <p>Capture + parse workflow to spot login anomalies and suspicious hosts. Quick filters for RDP and SMB traffic.</p>
-          <div class="meta">
-            <span>Scapy • PCAP parsing • Enrichment</span>
-          </div>
-          <a class="btn btn--inline" href="https://github.com/YouAndMeSundance/packet-analysis" target="_blank" rel="noopener">Repo</a>
+          <p class="text-mute text-sm">
+            Scapy capture and parse workflow to spot login anomalies and suspicious hosts.
+          </p>
+          <p class="text-mute text-xs mt-2">RDP focus • PCAP parsing • Enrichment</p>
+          <a class="inline-block mt-3 text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20"
+             href="https://github.com/YouAndMeSundance/packet-analysis" target="_blank" rel="noopener">Repo</a>
         </article>
 
-        <article class="card">
-          <div class="card-head">
-            <h3>AD Automation (PowerShell)</h3>
-            <span class="badge">PowerShell</span>
+        <!-- Card 3 -->
+        <article class="rounded-2xl bg-panel/70 border border-white/10 p-4 hover:border-brand/40 transition shadow-lg">
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="font-bold">AD Automation</h3>
+            <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full
+              bg-gradient-to-tr from-brand to-brand2">PowerShell</span>
           </div>
-          <p>User lifecycle scripts for quick provisioning, access checks, and audit-friendly logs.</p>
-          <div class="meta">
-            <span>CSV-driven • Logging • Idempotent</span>
-          </div>
-          <a class="btn btn--inline" href="https://github.com/YouAndMeSundance/powershell-scripts" target="_blank" rel="noopener">Repo</a>
+          <p class="text-mute text-sm">
+            User lifecycle scripts for fast provisioning, access checks, and audit friendly logs.
+          </p>
+          <p class="text-mute text-xs mt-2">CSV driven • Logging • Idempotent</p>
+          <a class="inline-block mt-3 text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20"
+             href="https://github.com/YouAndMeSundance/powershell-scripts" target="_blank" rel="noopener">Repo</a>
         </article>
       </div>
     </section>
 
-    <section id="skills" class="section">
-      <h2>Skills</h2>
-      <ul class="tags">
-        <li>Splunk</li><li>Wazuh</li><li>Kali</li><li>Wireshark</li><li>Python</li><li>PowerShell</li>
-        <li>Windows Admin</li><li>AD/Azure AD</li><li>Ticketing</li><li>Networking</li>
+    <!-- Skills -->
+    <section id="skills" class="max-w-6xl mx-auto px-4 pt-12">
+      <h2 class="text-2xl font-extrabold mb-5">Skills</h2>
+      <ul class="flex flex-wrap gap-2">
+        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Splunk</li>
+        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Wazuh</li>
+        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Kali</li>
+        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Wireshark</li>
+        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Python</li>
+        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">PowerShell</li>
+        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Windows Admin</li>
+        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">AD / Azure AD</li>
+        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Ticketing</li>
+        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Networking</li>
       </ul>
     </section>
 
-    <section id="about" class="section about">
-      <div class="about-inner">
+    <!-- About -->
+    <section id="about" class="max-w-6xl mx-auto px-4 pt-12">
+      <div class="grid md:grid-cols-[1.2fr_.8fr] gap-6 items-center">
         <div>
-          <h2>About</h2>
-          <p>
+          <h2 class="text-2xl font-extrabold mb-3">About</h2>
+          <p class="text-mute">
             System Coordinator with real IT support experience and a SOC mindset. I like turning noisy data into clear action,
             writing small tools to speed up investigations, and documenting what I learn so others can use it.
           </p>
-          <p>
-            Recent focus: building repeatable workflows for log review, writing tidy Python scripts,
-            and practicing alert triage in Splunk and Wazuh labs.
+          <p class="text-mute mt-2">
+            Recent focus: repeatable workflows for log review, tidy Python scripts, and alert triage in Splunk and Wazuh labs.
           </p>
-          <div class="about-links">
-            <a class="btn btn--ghost" href="mailto:03jordansena@gmail.com">Email</a>
-            <a class="btn btn--ghost" href="https://www.linkedin.com/in/jsena03" target="_blank" rel="noopener">LinkedIn</a>
+          <div class="flex gap-3 mt-4">
+            <a class="px-3 py-1.5 rounded-lg border border-white/15" href="mailto:03jordansena@gmail.com">Email</a>
+            <a class="px-3 py-1.5 rounded-lg border border-white/15"
+               href="https://www.linkedin.com/in/jsena03" target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </div>
-        <img class="headshot" src="images/headshot.jpg" alt="Jordan Sena headshot" />
+        <img class="w-40 h-40 rounded-xl object-cover border border-white/10 justify-self-end"
+             src="images/headshot.jpg" alt="Jordan Sena headshot" />
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>© <span id="y"></span> Jordan Sena • Built with HTML + CSS</p>
+  <!-- Footer -->
+  <footer class="border-t border-white/10 mt-12">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-center text-mute">
+      © <span id="y"></span> Jordan Sena • Built with HTML + Tailwind
+    </div>
   </footer>
 
   <script>
+    // year
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // theme toggle
+    const btn = document.getElementById('themeBtn');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        const el = document.documentElement;
+        const dark = el.classList.toggle('dark');
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+      });
+    }
   </script>
 </body>
 </html>
