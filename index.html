@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" class="dark" >
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jordan Sena • Cybersecurity & IT</title>
-  <meta name="description" content="SOC focused cybersecurity and IT portfolio by Jordan Sena." />
+  <meta name="description" content="SOC‑focused cybersecurity and IT portfolio by Jordan Sena." />
 
-  <!-- Tailwind CDN -->
+
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Tailwind config inline -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -21,228 +19,377 @@
             ink:  '#e6e9ef',
             mute: '#9aa5b1',
             brand:'#5eead4',
-            brand2:'#7c3aed'
+            brand2:'#7c3aed',
+            ring:'#5eead4'
           },
           boxShadow: {
             glow: '0 0 0 3px rgba(94,234,212,.25)'
+          },
+          dropShadow: {
+            brand: '0 10px 25px rgba(124,58,237,.25)'
+          },
+          transitionTimingFunction: {
+            'snap': 'cubic-bezier(.2,.8,.2,1)'
           }
         }
       }
     }
   </script>
 
-  <!-- Font (optional) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     html, body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-    /* gradient background */
     .bg-grid {
       background:
         radial-gradient(800px 400px at 10% -10%, rgba(124,58,237,.18), transparent 60%),
         radial-gradient(700px 350px at 110% 10%, rgba(94,234,212,.12), transparent 55%);
     }
+    .focus-ring { outline: none; box-shadow: 0 0 0 3px rgba(94,234,212,.35); }
   </style>
   <script>
-    // theme preference persist
-    const userPref = localStorage.getItem('theme');
-    if (userPref === 'light') document.documentElement.classList.remove('dark');
-    if (userPref === 'dark')  document.documentElement.classList.add('dark');
+
+    const pref = localStorage.getItem('theme');
+    if (pref === 'light') document.documentElement.classList.remove('dark');
+    if (pref === 'dark')  document.documentElement.classList.add('dark');
   </script>
 </head>
 
-<body class="bg-bg text-ink bg-grid min-h-screen">
-  <!-- Nav -->
-  <header class="border-b border-white/10">
-    <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="#" class="inline-grid w-10 h-10 place-items-center rounded-xl
-         text-bg font-extrabold tracking-wide
-         bg-gradient-to-tr from-brand to-brand2 shadow-glow">JS</a>
+<body class="bg-bg text-ink bg-grid min-h-screen selection:bg-brand/30 selection:text-ink">
 
-      <div class="hidden sm:flex items-center gap-6 text-sm">
-        <a href="#projects" class="text-ink/90 hover:text-ink">Projects</a>
-        <a href="#skills" class="text-ink/90 hover:text-ink">Skills</a>
-        <a href="#about" class="text-ink/90 hover:text-ink">About</a>
-        <a href="mailto:03jordansena@gmail.com"
-           class="px-3 py-1.5 rounded-lg border border-white/15 text-ink/90 hover:text-ink">Contact</a>
-        <button id="themeBtn" class="px-3 py-1.5 rounded-lg bg-panel border border-white/10">
-          Toggle Theme
-        </button>
+  <header class="border-b border-white/10 sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-bg/70">
+    <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#home" class="inline-grid w-10 h-10 place-items-center rounded-xl text-bg font-extrabold tracking-wide bg-gradient-to-tr from-brand to-brand2 shadow-glow" aria-label="Home">JS</a>
+      <div class="hidden sm:flex items-center gap-2 text-sm">
+        <a href="#projects" class="px-3 py-1.5 rounded-lg hover:bg-white/5">Projects</a>
+        <a href="#certs" class="px-3 py-1.5 rounded-lg hover:bg-white/5">Certifications</a>
+        <a href="#lab" class="px-3 py-1.5 rounded-lg hover:bg-white/5">Lab Setup</a>
+        <a href="#about" class="px-3 py-1.5 rounded-lg hover:bg-white/5">About</a>
+        <a href="#contact" class="px-3 py-1.5 rounded-lg hover:bg-white/5">Contact</a>
+        <button id="themeBtn" class="px-3 py-1.5 rounded-lg bg-panel border border-white/10" aria-pressed="true">Toggle Theme</button>
       </div>
+      <button id="menuBtn" class="sm:hidden p-2 rounded-lg bg-panel border border-white/10" aria-controls="mnav" aria-expanded="false">Menu</button>
     </nav>
 
-    <!-- Hero -->
-    <section class="max-w-6xl mx-auto px-4 pb-10 pt-6">
+    <div id="mnav" class="sm:hidden hidden border-t border-white/10">
+      <div class="max-w-6xl mx-auto px-4 py-3 grid gap-2 text-sm">
+        <a href="#projects" class="px-3 py-2 rounded-lg hover:bg-white/5">Projects</a>
+        <a href="#certs" class="px-3 py-2 rounded-lg hover:bg-white/5">Certifications</a>
+        <a href="#lab" class="px-3 py-2 rounded-lg hover:bg-white/5">Lab Setup</a>
+        <a href="#about" class="px-3 py-2 rounded-lg hover:bg-white/5">About</a>
+        <a href="#contact" class="px-3 py-2 rounded-lg hover:bg-white/5">Contact</a>
+      </div>
+    </div>
+
+
+    <section id="home" class="max-w-6xl mx-auto px-4 pb-10 pt-6">
       <p class="uppercase tracking-[.16em] text-brand text-xs mb-2">Cybersecurity • SOC • IT Ops</p>
       <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight mb-3">
-        Hi, I’m Jordan. Apsiring Cybersecurity Professional, System Engineer, and overall IT Specialist.
+        Hi, I’m Jordan. Aspiring Cybersecurity Professional, Systems Engineer, and IT Specialist.
       </h1>
       <p class="text-mute max-w-3xl">
-        Hands-on with Python, PowerShell, Splunk and Wazuh labs, plus real IT support.
-        Action oriented, problem solver, always learning.
+        Hands-on with Python, PowerShell, Splunk and Wazuh labs, plus real IT support. I like fast, clean fixes, readable scripts, and clear docs.
       </p>
       <div class="flex gap-3 mt-5">
-        <a href="#projects" class="px-4 py-2 rounded-xl text-bg font-bold
-           bg-gradient-to-tr from-brand to-brand2 shadow-glow">View Projects</a>
-        <a href="https://github.com/YouAndMeSundance" target="_blank" rel="noopener"
-           class="px-4 py-2 rounded-xl border border-white/15 text-ink/90 hover:text-ink">GitHub</a>
+        <a href="#projects" class="px-4 py-2 rounded-xl text-bg font-bold bg-gradient-to-tr from-brand to-brand2 shadow-glow">View Projects</a>
+        <a href="https://github.com/YouAndMeSundance" target="_blank" rel="noopener" class="px-4 py-2 rounded-xl border border-white/15 hover:bg-white/5">GitHub</a>
+      </div>
+
+      <div class="mt-6 p-4 rounded-2xl bg-panel/70 border border-white/10">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full bg-gradient-to-tr from-brand to-brand2">Featured Lab</span>
+          <strong>Splunk + Wazuh Detection Walkthrough</strong>
+        </div>
+        <p class="text-mute text-sm mt-2">Simulated RDP brute force → detection rule → triage → response with timelines, queries, and artifacts. <a href="#projects" class="underline hover:no-underline">See details</a>.</p>
       </div>
     </section>
   </header>
 
-  <main class="pb-16">
-    <!-- Projects -->
-    <section id="projects" class="max-w-6xl mx-auto px-4 pt-10">
-      <h2 class="text-2xl font-extrabold mb-5">Featured Projects</h2>
+  <main class="pb-20">
 
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <!-- Card 1 -->
-        <article class="rounded-2xl bg-panel/70 border border-white/10 p-4 hover:border-brand/40 transition shadow-lg">
+    <section id="projects" class="max-w-6xl mx-auto px-4 pt-8">
+      <div class="flex items-end justify-between gap-4 mb-5">
+        <h2 class="text-2xl font-extrabold">Featured Projects</h2>
+        <div class="flex items-center gap-2 text-xs">
+          <button class="filter-btn px-3 py-1.5 rounded-full border border-white/10 hover:border-brand/40" data-filter="all">All</button>
+          <button class="filter-btn px-3 py-1.5 rounded-full border border-white/10 hover:border-brand/40" data-filter="python">Python</button>
+          <button class="filter-btn px-3 py-1.5 rounded-full border border-white/10 hover:border-brand/40" data-filter="powershell">PowerShell</button>
+          <button class="filter-btn px-3 py-1.5 rounded-full border border-white/10 hover:border-brand/40" data-filter="networking">Networking</button>
+        </div>
+      </div>
+
+      <div id="projectGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <article class="proj rounded-2xl bg-panel/70 border border-white/10 p-4 hover:border-brand/40 transition shadow-lg group" data-tags="python networking">
           <div class="flex items-center justify-between mb-1">
             <h3 class="font-bold">Port Scanner</h3>
-            <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full
-              bg-gradient-to-tr from-brand to-brand2">Python</span>
+            <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full bg-gradient-to-tr from-brand to-brand2">Python</span>
           </div>
-          <p class="text-mute text-sm">
-            Multi threaded TCP scan with safe defaults. Built for quick triage in lab networks.
-          </p>
+          <p class="text-mute text-sm">Multi-threaded TCP scan with safe defaults. Built for quick triage in lab networks.</p>
           <p class="text-mute text-xs mt-2">Threads • Timeout control • CSV export</p>
-          <a class="inline-block mt-3 text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20"
-             href="https://github.com/YouAndMeSundance/port-scanner" target="_blank" rel="noopener">Repo</a>
+          <div class="mt-3 flex items-center gap-2">
+            <a class="text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20" href="https://github.com/YouAndMeSundance/port-scanner" target="_blank" rel="noopener">Repo</a>
+            <button class="demo-btn text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20" data-demo="portscanner">Screens</button>
+          </div>
         </article>
 
-        <!-- Card 2 -->
-        <article class="rounded-2xl bg-panel/70 border border-white/10 p-4 hover:border-brand/40 transition shadow-lg">
+        <article class="proj rounded-2xl bg-panel/70 border border-white/10 p-4 hover:border-brand/40 transition shadow-lg group" data-tags="networking python">
           <div class="flex items-center justify-between mb-1">
             <h3 class="font-bold">Packet Analysis</h3>
-            <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full
-              bg-gradient-to-tr from-brand to-brand2">Networking</span>
+            <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full bg-gradient-to-tr from-brand to-brand2">Networking</span>
           </div>
-          <p class="text-mute text-sm">
-            Scapy capture and parse workflow to spot login anomalies and suspicious hosts.
-          </p>
+          <p class="text-mute text-sm">Scapy capture and parse workflow to spot login anomalies and suspicious hosts.</p>
           <p class="text-mute text-xs mt-2">RDP focus • PCAP parsing • Enrichment</p>
-          <a class="inline-block mt-3 text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20"
-             href="https://github.com/YouAndMeSundance/packet-analysis" target="_blank" rel="noopener">Repo</a>
+          <div class="mt-3 flex items-center gap-2">
+            <a class="text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20" href="https://github.com/YouAndMeSundance/packet-analysis" target="_blank" rel="noopener">Repo</a>
+            <button class="demo-btn text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20" data-demo="packet">Screens</button>
+          </div>
         </article>
 
-        <!-- Card 3 -->
-        <article class="rounded-2xl bg-panel/70 border border-white/10 p-4 hover:border-brand/40 transition shadow-lg">
+  
+        <article class="proj rounded-2xl bg-panel/70 border border-white/10 p-4 hover:border-brand/40 transition shadow-lg group" data-tags="powershell">
           <div class="flex items-center justify-between mb-1">
             <h3 class="font-bold">AD Automation</h3>
-            <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full
-              bg-gradient-to-tr from-brand to-brand2">PowerShell</span>
+            <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full bg-gradient-to-tr from-brand to-brand2">PowerShell</span>
           </div>
-          <p class="text-mute text-sm">
-            User lifecycle scripts for fast provisioning, access checks, and audit friendly logs.
-          </p>
+          <p class="text-mute text-sm">User lifecycle scripts for fast provisioning, access checks, and audit‑friendly logs.</p>
           <p class="text-mute text-xs mt-2">CSV driven • Logging • Idempotent</p>
-          <a class="inline-block mt-3 text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20"
-             href="https://github.com/YouAndMeSundance/powershell-scripts" target="_blank" rel="noopener">Repo</a>
+          <div class="mt-3 flex items-center gap-2">
+            <a class="text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20" href="https://github.com/YouAndMeSundance/powershell-scripts" target="_blank" rel="noopener">Repo</a>
+            <button class="demo-btn text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20" data-demo="adauto">Screens</button>
+          </div>
         </article>
 
-        <!-- Card 4 -->
-        <article class="rounded-2xl bg-panel/70 border border-white/10 p-4 hover:border-brand/40 transition shadow-lg">
+        <article class="proj rounded-2xl bg-panel/70 border border-white/10 p-4 hover:border-brand/40 transition shadow-lg group" data-tags="windows">
           <div class="flex items-center justify-between mb-1">
             <h3 class="font-bold">IT Toolkit</h3>
-            <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full
-              bg-gradient-to-tr from-brand to-brand2">Batch</span>
+            <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full bg-gradient-to-tr from-brand to-brand2">Batch</span>
           </div>
-          <p class="text-mute text-sm">
-            Menu-driven batch script for common IT fixes like flushing DNS, resetting Winsock,
-            clearing temp files, and running SFC/DISM checks.
-          </p>
+          <p class="text-mute text-sm">Menu‑driven batch for common fixes: DNS flush, Winsock reset, cleanup, SFC/DISM.</p>
           <p class="text-mute text-xs mt-2">DNS • Network • DISM • Cleanup</p>
-          <a class="inline-block mt-3 text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20"
-             href="https://github.com/YouAndMeSundance/it-toolkit" target="_blank" rel="noopener">Repo</a>
+          <div class="mt-3 flex items-center gap-2">
+            <a class="text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20" href="https://github.com/YouAndMeSundance/it-toolkit" target="_blank" rel="noopener">Repo</a>
+            <button class="demo-btn text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20" data-demo="toolkit">Screens</button>
+          </div>
         </article>
 
-            <!-- Card 5 -->
-        <article class="rounded-2xl bg-panel/70 border border-white/10 p-4 hover:border-brand/40 transition shadow-lg">
+        <article class="proj rounded-2xl bg-panel/70 border border-white/10 p-4 hover:border-brand/40 transition shadow-lg group" data-tags="python">
           <div class="flex items-center justify-between mb-1">
             <h3 class="font-bold">IOC Lookup</h3>
-            <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full
-              bg-gradient-to-tr from-brand to-brand2">Python</span>
+            <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full bg-gradient-to-tr from-brand to-brand2">Python</span>
           </div>
-          <p class="text-mute text-sm">
-            CLI tool to check IPs, domains, and file hashes against threat intel feeds
-            like VirusTotal, AbuseIPDB, and AlienVault OTX.
-          </p>
+          <p class="text-mute text-sm">CLI to check IPs, domains, and hashes against VirusTotal, AbuseIPDB, OTX.</p>
           <p class="text-mute text-xs mt-2">Threat Intel • API Integration • CSV Output</p>
-          <a class="inline-block mt-3 text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20"
-             href="https://github.com/YouAndMeSundance/ioc-lookup" target="_blank" rel="noopener">Repo</a>
+          <div class="mt-3 flex items-center gap-2">
+            <a class="text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20" href="https://github.com/YouAndMeSundance/ioc-lookup" target="_blank" rel="noopener">Repo</a>
+            <button class="demo-btn text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20" data-demo="ioc">Screens</button>
+          </div>
         </article>
+
+        <article class="proj rounded-2xl bg-panel/70 border border-white/10 p-4 hover:border-brand/40 transition shadow-lg group" data-tags="soc python">
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="font-bold">Detection Lab: RDP Brute Force</h3>
+            <span class="text-xs font-extrabold text-bg px-2 py-1 rounded-full bg-gradient-to-tr from-brand to-brand2">SOC</span>
+          </div>
+          <p class="text-mute text-sm">Simulated attack → Splunk + Wazuh alerts → triage runbook with queries and artifacts.</p>
+          <p class="text-mute text-xs mt-2">Detections • Hunt queries • IR timeline</p>
+          <div class="mt-3 flex items-center gap-2">
+            <a class="text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20" href="#" aria-disabled="true">Write‑up (soon)</a>
+            <button class="demo-btn text-sm px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20" data-demo="rdp">Screens</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Impact notes -->
+      <div class="mt-6 grid md:grid-cols-3 gap-3 text-sm">
+        <div class="p-3 rounded-xl bg-panel/70 border border-white/10">Adds context: each project notes when you’d use it in a SOC/IT workflow.</div>
+        <div class="p-3 rounded-xl bg-panel/70 border border-white/10">Metrics: add run times, coverage, detections captured.</div>
+        <div class="p-3 rounded-xl bg-panel/70 border border-white/10">Docs: link short write‑ups or a wiki page per project.</div>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="max-w-6xl mx-auto px-4 pt-12">
-      <h2 class="text-2xl font-extrabold mb-5">Skills</h2>
+    <section id="certs" class="max-w-6xl mx-auto px-4 pt-12">
+      <h2 class="text-2xl font-extrabold mb-5">Certifications</h2>
       <ul class="flex flex-wrap gap-2">
-        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Splunk</li>
-        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Wazuh</li>
-        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Kali</li>
-        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Wireshark</li>
-        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Python</li>
-        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">PowerShell</li>
-        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Windows Admin</li>
-        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">AD / Azure AD</li>
-        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Ticketing</li>
-        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Networking</li>
+        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">CompTIA A+</li>
+        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Network+</li>
+        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">Security+</li>
+        <li class="px-3 py-1.5 rounded-full bg-panel border border-white/10 text-sm">ISC2 CC</li>
+
       </ul>
     </section>
 
-    <!-- About -->
+    <section id="lab" class="max-w-6xl mx-auto px-4 pt-12">
+      <h2 class="text-2xl font-extrabold mb-3">Lab Setup</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="rounded-2xl bg-panel/70 border border-white/10 p-4">
+          <h3 class="font-bold mb-2">Stack</h3>
+          <ul class="space-y-1 text-sm text-mute">
+            <li>VMware Workstation, Kali, Windows 10/11</li>
+            <li>Splunk Free + Wazuh Manager/Agent</li>
+            <li>Fortinet firewall (policy labs), VLANs</li>
+            <li>Python, PowerShell, Wireshark, Scapy</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-panel/70 border border-white/10 p-4">
+          <h3 class="font-bold mb-2">Scenarios</h3>
+          <ul class="space-y-1 text-sm text-mute">
+            <li>RDP brute force and failed logon analysis</li>
+            <li>Powershell execution and persistence checks</li>
+            <li>DNS anomaly hunting and IOC enrichment</li>
+            <li>AD provisioning and audit logging</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section id="about" class="max-w-6xl mx-auto px-4 pt-12">
       <div class="grid md:grid-cols-[1.2fr_.8fr] gap-6 items-center">
         <div>
           <h2 class="text-2xl font-extrabold mb-3">About</h2>
-          <p class="text-mute">
-            System Coordinator with real IT support experience and a SOC mindset. I like turning data into clear action,
-            writing small tools to speed up investigations, and documenting what I learn so others can use it.
-          </p>
-          <p class="text-mute mt-2">
-            Recent focus: repeatable workflows for log review, tidy Python scripts, and alert triage in Splunk and Wazuh labs.
-          </p>
+          <p class="text-mute">System Coordinator with real IT support experience and a SOC mindset. I like turning data into action, writing small tools to speed up investigations, and documenting what I learn so others can use it.</p>
+          <p class="text-mute mt-2">Recent focus: repeatable workflows for log review, clean Python, and alert triage in Splunk and Wazuh labs.</p>
           <div class="flex gap-3 mt-4">
-            <a class="px-3 py-1.5 rounded-lg border border-white/15" href="mailto:03jordansena@gmail.com">Email</a>
-            <a class="px-3 py-1.5 rounded-lg border border-white/15"
-               href="https://www.linkedin.com/in/jsena03" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="px-3 py-1.5 rounded-lg border border-white/15 hover:bg-white/5" href="mailto:03jordansena@gmail.com">Email</a>
+            <a class="px-3 py-1.5 rounded-lg border border-white/15 hover:bg-white/5" href="https://www.linkedin.com/in/jsena03" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="px-3 py-1.5 rounded-lg border border-white/15 hover:bg-white/5" href="https://github.com/YouAndMeSundance" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
-        <img class="w-40 h-40 rounded-xl object-cover border border-white/10 justify-self-end"
-             src="headshot.jpg" alt="Jordan Sena headshot" />
+        <img class="w-40 h-40 rounded-xl object-cover border border-white/10 justify-self-end" src="headshot.jpg" alt="Jordan Sena headshot" loading="lazy" />
+      </div>
+    </section>
+
+  
+    <section id="contact" class="max-w-6xl mx-auto px-4 pt-12">
+      <h2 class="text-2xl font-extrabold mb-3">Contact</h2>
+      <div class="rounded-2xl bg-panel/70 border border-white/10 p-4">
+        <p class="text-mute">Reach out for projects, contracting, or to chat shop. I answer fast.</p>
+        <div class="mt-3 flex flex-wrap gap-3 text-sm">
+          <a class="px-3 py-1.5 rounded-lg border border-white/15 hover:bg-white/5" href="mailto:03jordansena@gmail.com">03jordansena@gmail.com</a>
+          <a class="px-3 py-1.5 rounded-lg border border-white/15 hover:bg-white/5" href="https://youandmesundance.github.io/cyber" target="_blank" rel="noopener">Portfolio</a>
+          <a class="px-3 py-1.5 rounded-lg border border-white/15 hover:bg-white/5" href="https://www.linkedin.com/in/jsena03" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="border-t border-white/10 mt-12">
-    <div class="max-w-6xl mx-auto px-4 py-6 text-center text-mute">
-      © <span id="y"></span> Jordan Sena • Built with HTML + Tailwind
-    </div>
+    <div class="max-w-6xl mx-auto px-4 py-6 text-center text-mute">© <span id="y"></span> Jordan Sena • Built with HTML + Tailwind</div>
   </footer>
 
+  
+  <div id="modal" class="fixed inset-0 hidden items-center justify-center bg-black/70 p-4 z-50">
+    <div class="max-w-3xl w-full rounded-2xl bg-panel border border-white/10 overflow-hidden">
+      <div class="flex items-center justify-between px-4 py-3 border-b border-white/10">
+        <h4 id="modalTitle" class="font-bold">Demo</h4>
+        <button id="modalClose" class="px-3 py-1.5 rounded-lg border border-white/10 hover:bg-white/5">Close</button>
+      </div>
+      <div id="modalBody" class="p-4 grid gap-3">
+        
+      </div>
+    </div>
+  </div>
+
   <script>
-    // year
+
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // theme toggle
-    const btn = document.getElementById('themeBtn');
-    if (btn) {
-      btn.addEventListener('click', () => {
+
+    const themeBtn = document.getElementById('themeBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
         const el = document.documentElement;
         const dark = el.classList.toggle('dark');
         localStorage.setItem('theme', dark ? 'dark' : 'light');
+        themeBtn.setAttribute('aria-pressed', dark ? 'true' : 'false');
       });
     }
+
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mnav    = document.getElementById('mnav');
+    if (menuBtn && mnav) {
+      menuBtn.addEventListener('click', () => {
+        const open = mnav.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', (!open).toString());
+      });
+    }
+
+
+    const btns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.proj');
+    btns.forEach(b => b.addEventListener('click', () => {
+      const tag = b.dataset.filter;
+      btns.forEach(x => x.classList.remove('border-brand/40'));
+      b.classList.add('border-brand/40');
+      cards.forEach(c => {
+        if (tag === 'all') c.classList.remove('hidden');
+        else c.classList.toggle('hidden', !c.dataset.tags.includes(tag));
+      });
+    }));
+
+
+    const demoMap = {
+      portscanner: [
+        { src: 'screens/port-1.png', alt: 'Port scanner CLI output 1' },
+        { src: 'screens/port-2.png', alt: 'Port scanner CSV export' }
+      ],
+      packet: [
+        { src: 'screens/packet-1.png', alt: 'Scapy capture' },
+        { src: 'screens/packet-2.png', alt: 'RDP anomaly chart' }
+      ],
+      adauto: [
+        { src: 'screens/ad-1.png', alt: 'CSV‑driven provisioning' },
+        { src: 'screens/ad-2.png', alt: 'Log output for audit' }
+      ],
+      toolkit: [
+        { src: 'screens/toolkit-1.png', alt: 'Toolkit menu' },
+        { src: 'screens/toolkit-2.png', alt: 'DISM/SFC automation' }
+      ],
+      ioc: [
+        { src: 'screens/ioc-1.png', alt: 'IOC lookup result' },
+        { src: 'screens/ioc-2.png', alt: 'CSV enrichment' }
+      ],
+      rdp: [
+        { src: 'screens/rdp-1.png', alt: 'Splunk detection' },
+        { src: 'screens/rdp-2.png', alt: 'Wazuh alert flow' }
+      ]
+    };
+
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modalBody');
+    const modalTitle = document.getElementById('modalTitle');
+    const closeBtn = document.getElementById('modalClose');
+
+    document.querySelectorAll('.demo-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.demo;
+        const items = demoMap[key] || [];
+        modalBody.innerHTML = '';
+        modalTitle.textContent = btn.closest('article').querySelector('h3').textContent + ' — Screens';
+        items.forEach(i => {
+          const img = document.createElement('img');
+          img.src = i.src; img.alt = i.alt; img.loading = 'lazy';
+          img.className = 'w-full rounded-xl border border-white/10';
+          modalBody.appendChild(img);
+        });
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      });
+    });
+
+    const closeModal = () => { modal.classList.add('hidden'); modal.classList.remove('flex'); };
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const id = this.getAttribute('href');
+        if (id.length > 1) {
+          e.preventDefault();
+          document.querySelector(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
